@@ -79,3 +79,7 @@ html, body {
     cursor: pointer;
 }
 
+.warning {
+    border: 5px solid #fd2727;
+}
+
