@@ -2,16 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Client-side Form Validation</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link href="./styles/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="content">
-
+<div id="content">
+    <div class="form-container">
+        <div class="title">Submit A Form To Nowhere</div>
+        <form action="index.html" autocomplete="off" id="myForm" method="get">
+            <div class="form-element">
+                <label for="email">Email:</label>
+                <input id="email" name="email" required type="email">
+            </div>
+            <div class="form-element">
+                <label for="Country">Country:</label>
+                <input id="Country" name="Country" required type="text">
+            </div>
+            <div class="form-element">
+                <label for="postalCode">Country:</label>
+                <input id="postalCode" name="postalCode" required type="text">
+            </div>
+            <div class="form-element">
+                <label for="password">Password:</label>
+                <input id="password" name="password" required type="password">
+            </div>
+            <div class="form-element">
+                <label for="confirm-pass">Confirm Password:</label>
+                <input id="confirm-pass" name="confirm-pass" required type="password">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
+</div>
 </body>
 </html>
