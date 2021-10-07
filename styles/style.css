@@ -27,6 +27,7 @@ html, body {
     width: 40vw;
     background-color: var(--independence);
     border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .title {
@@ -66,7 +67,7 @@ html, body {
 
 .form-element input[type=text], input[type=password], input[type=email] {
     height: 2.5vh;
-    width: 50%;
+    width: 55%;
 }
 
 #myForm button {
@@ -81,5 +82,29 @@ html, body {
 
 .warning {
     border: 5px solid #fd2727;
+}
+
+.passWarn {
+    width: 90%;
+    text-align: center;
+    font-size: 0.5em;
+    color: #FFF;
+}
+
+.popup-banner {
+    height: 90px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: var(--eggshell);
+    border-radius: 15px;
+    position: absolute;
+    color: black;
+    padding-top: 15px;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 40vh;
 }
 

@@ -1,3 +1,4 @@
+const content = document.getElementById("content")
 const targetForm = document.getElementById("myForm")
 
 const emailField = document.getElementById("email")
@@ -7,40 +8,78 @@ const passField = document.getElementById("password")
 const passConfirm = document.getElementById("confirm-pass")
 
 
+const passWarn = () => {
+    let warning = document.createElement("p")
+    warning.classList.add("passWarn")
+    warning.textContent = "Pass must be 8 characters including 1 uppercase letter, 1 lowercase letter and numeric characters"
+    return warning
+}
+
+const testEmail = (value) => {
+    let emailPat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    return emailPat.test(value)
+}
+
+const testPass = (value) => {
+    let passValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+    return passValid.test(value)
+}
+
 const showWarning = (e) => {
     e.target.classList.add("warning")
     setTimeout(() => e.target.classList.remove("warning"), 500)
-    switch (e.target.name) {
-        default:
-            console.log(e.target.name)
-            break
-        case "email":
-            e.target.placeholder = "Please enter a valid email"
-            break
-        case "country":
-            e.target.placeholder = "Please enter a Country"
-            break
-        case "postalCode":
-            e.target.placeholder = "Please enter a Postal Code"
-            break
-        case "password":
-            e.target.placeholder = "Please enter a Password"
-            break
-        case "confirm-pass":
-            e.target.placeholder = "Please enter a Postal Code"
-            break
-    }
-
 }
 
-
 const addWarnings = () => {
-    emailField.addEventListener("focusout", (e) => showWarning(e))
-    countryField.addEventListener("focusout", (e) => showWarning(e))
-    postalField.addEventListener("focusout", (e) => showWarning(e))
-    passField.addEventListener("focusout", (e) => showWarning(e))
-    passConfirm.addEventListener("focusout", (e) => showWarning(e))
+    //TODO: show warning should actually be validate form, THEN show warning
+    emailField.addEventListener("blur", (e) => validateInput(e))
+    countryField.addEventListener("blur", (e) => validateInput(e))
+    postalField.addEventListener("blur", (e) => validateInput(e))
+    passField.addEventListener("blur", (e) => validateInput(e))
+    passConfirm.addEventListener("blur", (e) => validateInput(e))
 }
 addWarnings()
 
-// Add live validation listeners here, that call the warnings if they fail
+const validateInput = (e) => {
+    let password = passField.value
+
+    switch (e.target.name) {
+        default:
+        case "":
+            e.target.placeholder = `Please enter a ${e.target.name}`
+            showWarning(e)
+            break
+        case "email":
+            if (!testEmail(e.target.value)) {
+                e.target.value = ""
+                e.target.placeholder = "Use format: email@company.com"
+                break
+            }
+            break
+        case "password":
+            if (!testPass(e.target.value)) {
+                e.target.value = ""
+                e.target.parentElement.appendChild(passWarn())
+            }
+            break
+        case "confirm-pass":
+            if (e.target.value !== password) {
+                e.target.value = ""
+                e.target.placeholder = "Passwords do not match"
+            }
+            break
+    }
+}
+
+
+const displaySuccess = () => {
+    let popup = document.createElement("div")
+    popup.classList.add("popup-banner")
+    popup.textContent = "Congratulations: \n Successful Submit!"
+    content.appendChild(popup)
+}
+
+targetForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    displaySuccess()
+})
