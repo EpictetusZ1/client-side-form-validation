@@ -1,0 +1,20 @@
+@import url(reset.css);
+
+:root {
+    --eggshell: #f4f1deff;
+    --terra-cotta: #e07a5fff;
+    --independence: #3d405bff;
+    --green-sheen: #81b29aff;
+    --deep-champagne: #f2cc8fff;
+}
+
+html, body {
+    min-height: 100vh;
+    height: 100%;
+}
+
+#content {
+    height: 100%;
+    width: 100%;
+    background-color: var(--terra-cotta);
+}
