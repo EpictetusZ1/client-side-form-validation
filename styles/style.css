@@ -61,6 +61,17 @@ html, body {
     font-size: 1.7em;
 }
 
+
+.form-element input:valid {
+    border-radius: 3px;
+    border: 2px solid #01a901;
+}
+
+.form-element input:invalid {
+    border-radius: 3px;
+    border: 2px solid #000;
+}
+
 .form-element label {
     margin-bottom: 10px;
 }

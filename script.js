@@ -9,6 +9,9 @@ const passConfirm = document.getElementById("confirm-pass")
 
 
 const passWarn = () => {
+    let warnDisplay = document.querySelector(".passWarn")
+    console.log(warnDisplay)
+    if (warnDisplay) return
     let warning = document.createElement("p")
     warning.classList.add("passWarn")
     warning.textContent = "Pass must be 8 characters including 1 uppercase letter, 1 lowercase letter and numeric characters"
